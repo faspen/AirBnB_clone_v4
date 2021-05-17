@@ -1,14 +1,11 @@
 /*
    Checkbox for the list of amenities
 */
-console.log('document');
-
 $(document).ready(() => {
   /*
     Task 3: Request API
   */
-  console.log('docs');
-  $.get('http://localhost:5001/api/v1/status/', function (data) {
+  $.get('http://localhost:5001/api/v1/status', function (data) {
     if (data.status === 'OK') {
       $('#api_status').addClass('available');
     } else {
