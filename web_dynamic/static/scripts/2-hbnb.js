@@ -1,7 +1,7 @@
 /*
    Checkbox for the list of amenities
 */
-const $ = window.jQuery;
+const $ = window.$;
 
 $(document).ready(() => {
   const amenList = {};
@@ -17,12 +17,14 @@ $(document).ready(() => {
       $('.amenities H4').html('&nbsp;');
     }
   });
-});
-
-$.get('http://0.0.0.0:5001/api/v1/status/', function (data, stat) {
-  if (data.status === 'OK' && stat === 'success') {
-    $('DIV#api_status').addClass('available');
-  } else {
-    $('DIV#api_status').removeClass('available');
-  }
+  /*
+    Task 3: Request API
+*/
+  $.get('http://localhost:5001/api/v1/status/', function (data) {
+    if (data.status === 'OK') {
+      $('#api_status').addClass('available');
+    } else {
+      $('#api_status').removeClass('available');
+    }
+  });
 });
