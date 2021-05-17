@@ -1,9 +1,20 @@
 /*
    Checkbox for the list of amenities
 */
-const $ = window.jQuery;
+console.log('document');
 
 $(document).ready(() => {
+  /*
+    Task 3: Request API
+  */
+  console.log('docs');
+  $.get('http://localhost:5001/api/v1/status/', function (data) {
+    if (data.status === 'OK') {
+      $('#api_status').addClass('available');
+    } else {
+      $('#api_status').removeClass('available');
+    }
+  });
   const amenList = {};
   $('input[type=checkbox]').on('click', function () {
     if ($(this).prop('checked') === true) {
@@ -17,12 +28,4 @@ $(document).ready(() => {
       $('.amenities H4').html('&nbsp;');
     }
   });
-});
-
-$.get('http://0.0.0.0:5001/api/v1/status/', function (data, stat) {
-  if (data.status === 'OK' && stat === 'success') {
-    $('DIV#api_status').addClass('available');
-  } else {
-    $('DIV#api_status').removeClass('available');
-  }
 });
